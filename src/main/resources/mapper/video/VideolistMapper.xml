@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greatwqs.app.mapper.video.VideolistMapper">
+  <resultMap id="BaseResultMap" type="com.greatwqs.app.domain.po.VideoPo">
+    <id column="ID" jdbcType="BIGINT" property="id" />
+    <result column="Title" jdbcType="VARCHAR" property="title" />
+    <result column="VideoSourceURL" jdbcType="VARCHAR" property="videoSourceUrl" />
+    <result column="Content" jdbcType="VARCHAR" property="content" />
+    <result column="ISValid" jdbcType="TINYINT" property="isValid" />
+    <result column="CreateTime" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UpdateTime" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    ID, Title, VideoSourceURL, Content, ISValid, CreateTime, UpdateTime
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from videolist
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+
+</mapper>
